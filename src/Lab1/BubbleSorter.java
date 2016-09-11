@@ -1,16 +1,11 @@
 package Lab1;
 
-public class BubbleSorter implements Sorter
-{
-    public int[] Sort(int[] array)
-    {
-        for (int i = 0; i < array.length - 1; i++)
-        {
+public class BubbleSorter implements Sorter {
+    public int[] Sort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
             boolean swapped = false;
-            for (int j = 0; j < array.length - i - 1; j++)
-            {
-                if (array[j] > (array[j + 1]))
-                {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > (array[j + 1])) {
                     int tmp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = tmp;
@@ -18,9 +13,10 @@ public class BubbleSorter implements Sorter
                 }
             }
 
-            if(!swapped)
+            if(!swapped) {
                 break;
+            }
         }
-        return array; //? is array passed by ref?
+        return array;
     }
 }
