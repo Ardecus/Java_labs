@@ -1,7 +1,7 @@
-package Lab1;
+package Lab1.Sorters;
 
 import java.util.Arrays;
-
+//!!!!!!!!!!!wrong answer
 public class MergeSorter implements Sorter {
     public int[] Sort(int[] array)
     {
@@ -11,7 +11,7 @@ public class MergeSorter implements Sorter {
 
         int mid = array.length / 2;
         return Merge(Sort(Arrays.copyOfRange(array, 0, mid)),
-                     Sort(Arrays.copyOfRange(array, mid + 1, array.length - 1)));
+                     Sort(Arrays.copyOfRange(array, mid, array.length)));
     }
 
     static int[] Merge(int[] startArr, int[] endArr)

@@ -1,4 +1,4 @@
-package Lab1;
+package Lab1.Sorters;
 
 public class BubbleSorter implements Sorter {
     public int[] Sort(int[] array) {

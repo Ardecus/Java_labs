@@ -1,8 +1,9 @@
 package Lab1;
 
+import Lab1.Sorters.BubbleSorter;
+import Lab1.Sorters.Sorter;
 import org.reflections.Reflections;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -71,7 +72,7 @@ public class SpeedTest {
     }
 
     static Sorter[] GetSorters() {
-        Reflections reflections = new Reflections("Lab1");
+        Reflections reflections = new Reflections("Lab1/Sorters");
         Set<Class<? extends Sorter>> classes = reflections.getSubTypesOf(Sorter.class);
         List<Sorter> res = new ArrayList<>();
         for (Class<? extends Sorter> sorterClass:classes) {
