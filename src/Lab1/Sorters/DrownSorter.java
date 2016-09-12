@@ -1,5 +1,5 @@
-package Lab1;
-
+package Lab1.Sorters;
+//!!!!!!!!!!!wrong answer
 public class DrownSorter implements Sorter {
     public int[] Sort(int[] array) {
         for (int i = array.length - 1; i > 1; i--) {

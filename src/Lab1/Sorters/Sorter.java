@@ -1,4 +1,4 @@
-package Lab1;
+package Lab1.Sorters;
 
 public interface Sorter {
     int[] Sort(int[] array);
