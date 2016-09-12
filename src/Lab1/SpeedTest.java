@@ -121,7 +121,7 @@ public class SpeedTest {
     }
 
     public static void ShowSpeedTest() {
-        Sorter[] sorters = GetSorters();
+        Sorter[] sorters = new Sorter[] {new BubbleSorter()};
         Method[] lineGenerator = GetGenerators(LinearArray.class);
         Method[] polyGenerator = GetGenerators(PolynomialArray.class);
 

@@ -1,14 +1,20 @@
 package Lab1;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
 public class InputOutputManager {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     public static int[] ReadArray() {
         System.out.println("Enter array elements, divided by space:");
-        String[] input = System.console().readLine().split(" ");
-        int[] res = new int[input.length];
+        String[] input;
         try {
+            input = br.readLine().split(" ");
+            int[] res = new int[input.length];
             for (int i = 0; i < input.length; i++) {
                 res[i] = Integer.parseInt(input[i]);
             }

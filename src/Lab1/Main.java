@@ -5,7 +5,7 @@ public class Main {
         SpeedTest.ShowSpeedTest();
         int[] array = InputOutputManager.ReadArray();
         Sorter sorter = MethodChooser.GetAppropriateMethod(array.length);
-        array = sorter.Sort(array);
+        sorter.Sort(array);
         InputOutputManager.PrintArray(array);
     }
 }
