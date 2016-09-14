@@ -16,4 +16,8 @@ public class SwapSorter implements Sorter {
         }
         return array;
     }
+
+    public int Complexity(int length) {
+        return (int)(Math.pow(length, 3) / 2);
+    }
 }

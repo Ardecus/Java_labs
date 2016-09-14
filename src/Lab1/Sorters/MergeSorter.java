@@ -29,4 +29,8 @@ public class MergeSorter implements Sorter {
         }
         return merged;
     }
+
+    public int Complexity(int length) {
+        return (int)(length * Math.log(length));
+    }
 }

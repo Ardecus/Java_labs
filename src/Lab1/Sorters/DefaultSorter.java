@@ -7,4 +7,8 @@ public class DefaultSorter implements Sorter{
         Arrays.sort(array);
         return  array;
     }
+
+    public int Complexity(int length) {
+        return length;
+    }
 }

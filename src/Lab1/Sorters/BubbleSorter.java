@@ -19,4 +19,8 @@ public class BubbleSorter implements Sorter {
         }
         return array;
     }
+
+    public int Complexity(int length) {
+        return (int)(Math.pow(length, 2) / 2);
+    }
 }

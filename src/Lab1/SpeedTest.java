@@ -1,13 +1,9 @@
 package Lab1;
 
-import Lab1.Sorters.BubbleSorter;
-import Lab1.Sorters.Sorter;
-import org.reflections.Reflections;
+import Lab1.Sorters.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import java.lang.annotation.*;
 import java.lang.reflect.Method;
@@ -21,8 +17,12 @@ public class SpeedTest {
     @Target({ElementType.METHOD})
     public @interface PolynomialArray{}
 
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target({ElementType.METHOD})
+    public @interface Array{}
 
-    @LinearArray
+
+    @LinearArray @Array
     static int[] GetArraySorted(int arrayLength) {
         int[] res = new int[arrayLength];
         for (int i = 0; i < arrayLength; i++) {
@@ -31,7 +31,7 @@ public class SpeedTest {
         return res;
     }
 
-    @LinearArray
+    @LinearArray @Array
     static int[] GetArrayAdded(int arrayLength) {
         int[] res = new int[arrayLength];
         int i;
@@ -42,7 +42,7 @@ public class SpeedTest {
         return res;
     }
 
-    @PolynomialArray
+    @PolynomialArray @Array
     static int[] GetArrayReverseSorted(int arrayLength) {
         int[] res = new int[arrayLength];
         for (int i = 0; i < arrayLength; i++) {
@@ -51,7 +51,7 @@ public class SpeedTest {
         return res;
     }
 
-    @PolynomialArray
+    @PolynomialArray @Array
     static int[] GetArrayRandom(int arrayLength) {
         int[] res = new int[arrayLength];
         for (int i = 0; i < arrayLength; i++) {
@@ -60,38 +60,15 @@ public class SpeedTest {
         return res;
     }
 
-
-    static Method[] GetGenerators(Class annotation) {
-        final Set<Method> methods = new HashSet<>();
-        for (final Method method : SpeedTest.class.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(annotation)) {
-                methods.add(method);
-            }
-        }
-        return methods.toArray(new Method[methods.size()]);
-    }
-
-    static Sorter[] GetSorters() {
-        Reflections reflections = new Reflections("Lab1/Sorters");
-        Set<Class<? extends Sorter>> classes = reflections.getSubTypesOf(Sorter.class);
-        List<Sorter> res = new ArrayList<>();
-        for (Class<? extends Sorter> sorterClass:classes) {
-            try {
-                res.add(sorterClass.newInstance());
-            } catch (Exception e) { }
-        }
-        return res.toArray(new Sorter[res.size()]);
-    }
-
     static void SpeedTestForGenerators (Method[] generators, Sorter[] sorters, int start, int end)
     {
         List<String> genNames = new ArrayList<>();
-        genNames.add("Array length");
-        for (Method generator:generators) {
+        genNames.add("ArrayLength");
+        for (Method generator : generators) {
             genNames.add(generator.getName());
         }
 
-        for (Sorter sorter:sorters) {
+        for (Sorter sorter : sorters) {
             System.out.println(sorter.getClass().getName() + ":");
             InputOutputManager.PrintArray(genNames);
 
@@ -122,11 +99,11 @@ public class SpeedTest {
     }
 
     public static void ShowSpeedTest() {
-        Sorter[] sorters = new Sorter[] {new BubbleSorter()};
-        Method[] lineGenerator = GetGenerators(LinearArray.class);
-        Method[] polyGenerator = GetGenerators(PolynomialArray.class);
+        Sorter[] sorters = new Sorter[] {new DrownSorter()};
+        Method[] lineGenerator = Getters.GetGenerators(LinearArray.class);
+        Method[] polyGenerator = Getters.GetGenerators(PolynomialArray.class);
 
         SpeedTestForGenerators(lineGenerator, sorters, 6, 8);
-        SpeedTestForGenerators(polyGenerator, sorters, 3, 5);
+        SpeedTestForGenerators(polyGenerator, sorters, 6, 8);
     }
 }
