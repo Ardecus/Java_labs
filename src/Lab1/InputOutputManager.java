@@ -24,6 +24,7 @@ public class InputOutputManager {
         }
     }
 
+    //could've done it better, without copypasting two methods, but...
     public static void PrintArray(int[] array) {
         if (array.length == 0) {
             System.out.println("Empty array");

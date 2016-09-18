@@ -21,7 +21,7 @@ public class SpeedTest {
     @Target({ElementType.METHOD})
     public @interface Array{}
 
-
+    //{1, 2, 3 ... n}
     @LinearArray @Array
     static int[] GetArraySorted(int arrayLength) {
         int[] res = new int[arrayLength];
@@ -31,6 +31,7 @@ public class SpeedTest {
         return res;
     }
 
+    //{1, 2, 3 ... n - 1, random}
     @LinearArray @Array
     static int[] GetArrayAdded(int arrayLength) {
         int[] res = new int[arrayLength];
@@ -42,6 +43,7 @@ public class SpeedTest {
         return res;
     }
 
+    //{n, n - 1, n - 2 ... 1}
     @PolynomialArray @Array
     static int[] GetArrayReverseSorted(int arrayLength) {
         int[] res = new int[arrayLength];
@@ -51,6 +53,7 @@ public class SpeedTest {
         return res;
     }
 
+    //{ all random }
     @PolynomialArray @Array
     static int[] GetArrayRandom(int arrayLength) {
         int[] res = new int[arrayLength];
@@ -62,6 +65,7 @@ public class SpeedTest {
 
     static void SpeedTestForGenerators (Method[] generators, Sorter[] sorters, int start, int end)
     {
+        //table head
         List<String> genNames = new ArrayList<>();
         genNames.add("ArrayLength");
         for (Method generator : generators) {
@@ -86,10 +90,10 @@ public class SpeedTest {
                         try {
                             array = (int[]) generator.invoke(null, params);
                         } catch (Exception e) { }
-                        long startTime = System.currentTimeMillis();
+                        long startTime = System.currentTimeMillis(); //start timer
                         sorter.Sort(array);
-                        long endTime = System.currentTimeMillis();
-                        long totalTime = endTime - startTime;
+                        long endTime = System.currentTimeMillis();   //stop timer
+                        long totalTime = endTime - startTime;        //and get spent time in ms
                         res.add((int)totalTime);
                     }
                     InputOutputManager.PrintArray(res);
@@ -100,6 +104,8 @@ public class SpeedTest {
 
     public static void ShowSpeedTest() {
         Sorter[] sorters = new Sorter[] {new DrownSorter()};
+        // splited in different arrays for adequate time testing
+        // sorted arrays take 100 times more array elements to test
         Method[] lineGenerator = Getters.GetGenerators(LinearArray.class);
         Method[] polyGenerator = Getters.GetGenerators(PolynomialArray.class);
 

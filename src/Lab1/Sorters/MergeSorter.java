@@ -3,6 +3,7 @@ package Lab1.Sorters;
 import java.util.Arrays;
 
 public class MergeSorter implements Sorter {
+    //recursively split an array into two halves and sort them
     public int[] Sort(int[] array)
     {
         if (array.length <= 1) {
@@ -14,6 +15,9 @@ public class MergeSorter implements Sorter {
                      Sort(Arrays.copyOfRange(array, mid, array.length)));
     }
 
+
+    //Merging two arrays in order:
+    //e. g. {1, 3, 5} and {2, 4} after merging returns {1, 2, 3, 4, 5}
     static int[] Merge(int[] startArr, int[] endArr)
     {
         int si = 0,

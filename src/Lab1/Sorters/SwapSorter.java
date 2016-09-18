@@ -1,6 +1,7 @@
 package Lab1.Sorters;
 
 public class SwapSorter implements Sorter {
+    //Swapping elements with minimal to the right
     public int[] Sort(int[] array)
     {
         for (int i = 0; i < array.length - 1; i++) {

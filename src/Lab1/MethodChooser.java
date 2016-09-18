@@ -3,6 +3,9 @@ package Lab1;
 import Lab1.Sorters.*;
 
 public class MethodChooser {
+    //from all sorters implementations searches the one that is the fastest one for given length
+    //...
+    //default sorting always wins.
     public static Sorter GetAppropriateMethod(int arrayLength) {
         Sorter[] sorters = Getters.GetSorters();
         int min = Integer.MIN_VALUE;
