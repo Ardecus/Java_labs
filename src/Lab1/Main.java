@@ -6,8 +6,7 @@ public class Main {
     public static void main(String[] args) {
         //SpeedTest.ShowSpeedTest();
         int[] array = InputOutputManager.ReadArray();
-        Sorter sorter = MethodChooser.GetAppropriateMethod(array.length);
-        array = sorter.Sort(array);
+        array = MethodChooser.Sort(array);
         InputOutputManager.PrintArray(array);
     }
 }

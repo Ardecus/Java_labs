@@ -6,7 +6,7 @@ public class MethodChooser {
     //from all sorters implementations searches the one that is the fastest one for given length
     //...
     //default sorting always wins.
-    public static Sorter GetAppropriateMethod(int arrayLength) {
+    private static Sorter GetAppropriateMethod(int arrayLength) {
         Sorter[] sorters = Getters.GetSorters();
         int min = Integer.MIN_VALUE;
         Sorter res = new DefaultSorter();
@@ -18,5 +18,11 @@ public class MethodChooser {
             }
         }
         return res;
+    }
+
+    //calling choosen sorter
+    public static int[] Sort(int[] array)
+    {
+        return GetAppropriateMethod(array.length).Sort(array);
     }
 }
